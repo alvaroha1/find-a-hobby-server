@@ -1,5 +1,7 @@
 const raccoon = require('raccoon');
 
+const url = 'redis://h:p2a29af429f190dc2f803ff41b43ab0767adc74be1fd23222431ff9d7e396d071@ec2-18-208-87-147.compute-1.amazonaws.com:15529'
+
 // / these are the default values but you can change them
 raccoon.config.nearestNeighbors = 5; // number of neighbors you want to compare a user against
 raccoon.config.className = 'hobby'; // prefix for your items (used for redis)
@@ -16,11 +18,3 @@ raccoon.config.remoteRedisAuth = process.env.REDIS_AUTH; // remote redis auth
 raccoon.config.localSetup = false; // IMPORTANT. whether you want to use local or remote databases
 
 module.exports = raccoon;
-
-//
-// redis://
-// h:p2a29af429f190dc2f803ff41b43ab0767adc74be1fd23222431ff9d7e396d071
-// @
-// ec2-18-208-87-147.compute-1.amazonaws.com
-// :
-// 15529

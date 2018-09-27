@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const hobbySchema = new mongoose.Schema({
 	name:	String,
 	description: String,
-	"links": [{}],
+	'links': [{}],
 	"tags": [{}],
 	"pictures": [{}]
 });

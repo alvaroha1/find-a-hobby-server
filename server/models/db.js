@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const dbURL = process.env.MONGODB_URI;
+const dbURL = 'mongodb://localhost/find-a-hobby';
 // for local
 module.exports = mongoose.connect(dbURL, console.log(`Mongoose connected to ${dbURL}`));
 
