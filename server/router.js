@@ -5,7 +5,8 @@ const router = new Router();
 
 const hobbiesController = require('./controllers/hobbies.controller');
 const appController = require('./controllers/app.controller');
-const sessionController = require('./controllers/session.controller');
+// const sessionController = require('./controllers/session.controller');
+const authenticationController = require('./controllers/authentication.controller');
 
 router.get('/', appController.getIndex);
 router.get('/hobbies/all', hobbiesController.getAllHobbies);
@@ -15,7 +16,9 @@ router.get('/hobbies/rec:user', hobbiesController.getRecHobbies);
 router.post('/hobbies', hobbiesController.postHobby);
 router.put('/hobbies/like', hobbiesController.likeHobby);
 router.put('/hobbies/dislike', hobbiesController.dislikeHobby);
+router.post('/signup', authenticationController.signup);
 
-router.get('/sid', sessionController.getSessionId);
+
+// router.get('/sid', sessionController.getSessionId);
 
 module.exports = router;
