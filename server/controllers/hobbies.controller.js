@@ -1,6 +1,7 @@
 const raccoon = require('../services/raccoon');
 
 const Hobby = require('../models/hobby');
+const User = require('../models/user');
 
 const getAllHobbies = async (ctx, next) => {
   const hobbies = await Hobby.find();
@@ -62,7 +63,7 @@ const postHobby = async (ctx, next) => {
         pictures: hobbyData.pictures,
       });
       const savedHobby = await hobby.save()
-      if (savedHobby.length) {
+      if (savedHobby) {
         ctx.status = 201;
         ctx.body = JSON.stringify({
           status: 'success',
@@ -75,9 +76,12 @@ const postHobby = async (ctx, next) => {
   }
 };
 
-const likeHobby = (ctx, next) => {
+const likeHobby = async (ctx, next) => {
   const userId = ctx.token;
   const hobbyId = ctx.request.body.hobbyId;
+
+
+  const user = await User.findOneAndUpdate(userId, { $set: { likedHobbies: hobbyId } });
   // console.log('--userId:', userId);
   // console.log('--hobbyId:', hobbyId);
 
