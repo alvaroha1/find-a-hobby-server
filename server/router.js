@@ -10,9 +10,9 @@ const authenticationController = require('./controllers/authentication.controlle
 
 router.get('/', appController.getIndex);
 router.get('/discover', hobbiesController.getAllHobbies);
-router.get('/hobbies/seen', hobbiesController.getSeenHobbies);
-router.get('/hobbies/random', hobbiesController.getRandomHobbie);
-router.get('/hobbies/rec:user', hobbiesController.getRecHobbies);
+router.get('/favorites', hobbiesController.getFavHobbies);
+// router.get('/hobbies/random', hobbiesController.getRandomHobbie);
+// router.get('/hobbies/rec:user', hobbiesController.getRecHobbies);
 router.post('/create', hobbiesController.postHobby);
 router.put('/discover/like', hobbiesController.likeHobby);
 router.put('/discover/dislike', hobbiesController.dislikeHobby);

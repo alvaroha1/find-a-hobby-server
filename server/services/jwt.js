@@ -6,15 +6,17 @@ const secret = 'secret';
 
 
 const createToken = () => jwt.sign({
+  user: 'user',
+  email: 'user@user.com',
   uuid: uuid()
 }, secret);
 
 module.exports = async (ctx, next) => {
-  let token;
+  let payload;
 
   try {
     token = ctx.headers.authorization.split('Bearer ')[1];
-    jwt.verify(token, secret);
+    jwt.verify(payload, secret);
   } catch(e) {
     token = createToken();
   }

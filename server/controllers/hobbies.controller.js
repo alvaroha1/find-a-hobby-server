@@ -1,43 +1,67 @@
 const raccoon = require('../services/raccoon');
+const jwt = require('jsonwebtoken');
 
 const Hobby = require('../models/hobby');
 const User = require('../models/user');
 
 const getAllHobbies = async (ctx, next) => {
-  const hobbies = await Hobby.find();
+  let hobbies = await Hobby.find();
+  const userId = ctx.token;
   if (!hobbies) {
     console.log('no hobbies found');
     ctx.body = 'no hobbies found';
     ctx.status = 500;
     return;
   }
+  const decoded = jwt.verify( userId, 'secret')
+
+  let user = await User.findOne({ user: decoded.user })
+
+  if (user.length === 0) {
+    // User.user = decoded.user
+    user = await User.create({ user: decoded.user, email: decoded.email })
+  }
+
+  hobbies = hobbies.filter(hobby => !user.likedHobbies.includes(String(hobby._id)));
+  hobbies = hobbies.filter(hobby => !user.dislikedHobbies.includes(String(hobby._id)));
+
+  console.log(hobbies)
+
   ctx.body = hobbies;
 };
 
-const getRandomHobbie = async (ctx, next) => {
-  const hobbies = await Hobby.find();
-  ctx.body = hobbies[Math.floor(Math.random()*hobbies.length)];
-}
+// const getRandomHobbie = async (ctx, next) => {
+//   const hobbies = await Hobby.find();
+//   ctx.body = hobbies[Math.floor(Math.random()*hobbies.length)];
+// }
 
-const getRecHobbies = async (ctx, next) => {
-  const user = ctx.params.user.slice(1);
-  // console.log('----user of the recom:',user);
+const getFavHobbies = async (ctx, next) => {
+  let hobbies = await Hobby.find();
+  const userId = ctx.token;
+  if (!hobbies) {
+    console.log('no hobbies found');
+    ctx.body = 'no hobbies found';
+    ctx.status = 500;
+    return;
+  }
+  const decoded = jwt.verify( userId, 'secret')
 
-  const recs = await raccoon.recommendFor(user, 10);
-  const recsMap = await Hobby.find({
-    _id: {
-      $in: recs,
-    },
-  });
+  let user = await User.findOne({ user: decoded.user })
 
-  ctx.body = recsMap;
-  ctx.status = 200;
+  if (user.length === 0) {
+    // User.user = decoded.user
+    user = await User.create({ user: decoded.user, email: decoded.email })
+  }
+
+  hobbies = hobbies.filter(hobby => user.likedHobbies.includes(String(hobby._id)));
+
+  ctx.body = hobbies;
 };
 
-const getSeenHobbies = async (ctx,next) => {
-  // const userId = ctx.request.body;
-  // // TODO: this
-}
+// const getSeenHobbies = async (ctx,next) => {
+//   // const userId = ctx.request.body;
+//   // // TODO: this
+// }
 
 const postHobby = async (ctx, next) => {
   const hobbyData = ctx.request.body;
@@ -80,21 +104,30 @@ const likeHobby = async (ctx, next) => {
   const userId = ctx.token;
   const hobbyId = ctx.request.body.hobbyId;
 
-
-  const user = await User.findOneAndUpdate(userId, { $set: { likedHobbies: hobbyId } });
-  // console.log('--userId:', userId);
-  // console.log('--hobbyId:', hobbyId);
+  const decoded = jwt.verify(userId, 'secret')
+  let user = await User.find({ user: decoded.user });
+  if (user.length) {
+    user = await User.findOneAndUpdate({ user: decoded.user }, { $addToSet: { likedHobbies: hobbyId } });
+  }
 
   raccoon.liked(userId, hobbyId);
 
   ctx.body = { userId, hobbyId };
 };
 
-const dislikeHobby = (ctx, next) => {
+const dislikeHobby = async (ctx, next) => {
   const userId = ctx.token;
   const hobbyId = ctx.request.body.hobbyId;
   // console.log('--userId:', userId);
   // console.log('--hobbyId:', hobbyId);
+  const decoded = jwt.verify(userId, 'secret')
+  //
+  let user = await User.find({ user: decoded.user });
+  if (user.length) {
+    user = await User.findOneAndUpdate(user, { $addToSet: { $each: { dislikedHobbies: hobbyId } } });
+  } else {
+    user = await User.create({ user, dislikedHobbies: [hobbyId] })
+  }
 
   raccoon.disliked(userId, hobbyId);
 
@@ -103,9 +136,9 @@ const dislikeHobby = (ctx, next) => {
 
 module.exports = {
   getAllHobbies,
-  getSeenHobbies,
-  getRandomHobbie,
-  getRecHobbies,
+  getFavHobbies,
+  // getRandomHobbie,
+  // getRecHobbies,
   postHobby,
   likeHobby,
   dislikeHobby,
