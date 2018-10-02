@@ -1,51 +1,39 @@
+const User = require('../models/user');
 
-const signup = (ctx, next) => {
-  const email = ctx.response.body.email;
-  const password = ctx.response.body.password;
-  // console.log(ctx.headers);
-  if(!email || !password) {
-    return ctx.status = 200;
+const signup = async (ctx, next) => {
+
+  const {
+    name,
+    username,
+    password,
+    confirmPassword,
+    email,
+  } = ctx.request.body;
+
+  const user = await User.findOne({ username }) || await User.findOne({ email });
+  console.log(user);
+  if (user) {
+    ctx.status = 409;
+    ctx.body = JSON.stringify({ error: 'User already exist' });
+  } else if (password !== confirmPassword) {
+    ctx.status = 400;
+    ctx.body = JSON.stringify({ error: 'Passwords do not match' });
+  } else if (!user) {
+    User.create({
+      name,
+      username,
+      password,
+      confirmPassword,
+      email,
+    });
+    ctx.status = 200;
+    ctx.body = JSON.stringify({ response: 'User created' });
+  } else {
+    ctx.status = 500;
+    ctx.body = JSON.stringify({ error: 'Unknown error' });
   }
-
-  User.findOne({ email: email }, function(err, existingUser) {
-    if(err) { return next(err); }
-
-    if(existingUser) {
-      ctx.status = 400;
-      ctx.body = {
-        errors:[
-          'Username already exists.'
-        ]
-      };
-    }
-    const user = new User({
-      email: email,
-      password: password
-    });
-
-    user.save(function(err) {
-      if(err) { return next(err);}
-      ctx.status = 200;
-    });
-
-  });
-}
+};
 
 module.exports = {
   signup,
-}
-
-
-// const getIndex = (ctx, next) => {
-//   ctx.body = 'this is the main view of Find a Hobby';
-//   ctx.status = 200;
-// }
-
-// module.exports = {
-//   signUp,
-// }
-
-// exports.getAll = async ctx => {
-//   ctx.response.body = await message.getAll();
-//   ctx.status = 200;
-// };
+};

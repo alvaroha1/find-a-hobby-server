@@ -1,17 +1,23 @@
 const jwt = require('jsonwebtoken');
 const uuid = require('uuid/v4');
+const User = require('../models/user');
 
 // const secret = process.env.JWT_SECRET;
 const secret = 'secret';
 
 
-const createToken = () => jwt.sign({
-  user: 'user',
-  email: 'user@user.com',
-  uuid: uuid()
-}, secret);
-
 module.exports = async (ctx, next) => {
+  const userData = await User.find({  username: 'user' });
+  console.log(userData)
+
+  const createToken = () => jwt.sign({
+    username: userData.username,
+    email: userData.email,
+    name: userData.name,
+    likedHobbies: userData.likedHobbies,
+    profile_picture: userData.image,
+  }, secret);
+
   let payload;
 
   try {
