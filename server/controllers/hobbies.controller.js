@@ -16,15 +16,15 @@ const getAllHobbies = async (ctx) => {
   }
   const decoded = jwt.verify(userId, 'secret');
 
-  let user = await User.findOne({ user: decoded.user });
+  let user = await User.findOne({ username: decoded.username });
 
   if (!user) {
-    user = await User.create({ user: decoded.user, email: decoded.email });
+    user = await User.create({ username: decoded.username, email: decoded.email });
   }
 
   // number of liked hobbies before starting recommendations
   if (user.likedHobbies.length > 2) {
-    const recs = await raccoon.recommendFor(decoded.user, 10);
+    const recs = await raccoon.recommendFor(decoded.username, 10);
     hobbies = hobbies.filter(hobby => recs.includes(hobby._id));
   }
 
@@ -46,11 +46,10 @@ const getFavHobbies = async (ctx) => {
   }
   const decoded = jwt.verify(userId, 'secret');
 
-  let user = await User.findOne({ user: decoded.user });
+  let user = await User.findOne({ username: decoded.username });
 
   if (user.length === 0) {
-    // User.user = decoded.user
-    user = await User.create({ user: decoded.user, email: decoded.email });
+    user = await User.create({ username: decoded.username, email: decoded.email });
   }
 
   hobbies = hobbies.filter(hobby => user.likedHobbies.includes(String(hobby._id)));
@@ -103,17 +102,17 @@ const likeHobby = async (ctx) => {
   const hobbyId = ctx.request.body.hobbyId;
 
   const decoded = jwt.verify(userId, 'secret');
-  let user = await User.find({ user: decoded.user });
+  let user = await User.find({ username: decoded.username });
   if (user.length) {
     user = await User.findOneAndUpdate(
-      { user: decoded.user },
+      { username: decoded.username },
       {
         $addToSet: { likedHobbies: hobbyId },
       },
     );
   }
 
-  raccoon.liked(decoded.user, hobbyId);
+  raccoon.liked(decoded.username, hobbyId);
 
   ctx.body = { userId, hobbyId };
 };
@@ -123,17 +122,17 @@ const dislikeHobby = async (ctx) => {
   const hobbyId = ctx.request.body.hobbyId;
 
   const decoded = jwt.verify(userId, 'secret');
-  let user = await User.find({ user: decoded.user });
+  let user = await User.find({ username: decoded.username });
   if (user.length) {
     user = await User.findOneAndUpdate(
-      { user: decoded.user },
+      { username: decoded.username },
       {
         $addToSet: { dislikedHobbies: hobbyId },
       },
     );
   }
 
-  raccoon.disliked(decoded.user, hobbyId);
+  raccoon.disliked(decoded.username, hobbyId);
 
   ctx.body = { userId, hobbyId };
 };

@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3001;
 app
   .use(cors())
   .use(logger())
-  .use(jwt)
+  // .use(jwt)
   .use(bodyParser())
   .use(router.routes());
 
