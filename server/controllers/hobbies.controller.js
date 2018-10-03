@@ -82,7 +82,7 @@ const postHobby = async (ctx) => {
         description: hobbyData.description,
         // links: hobbyData.links,
         tags: hobbyData.tags,
-        pictures: hobbyData.pictures,
+        pictures: hobbyData.picture,
       });
       const savedHobby = await hobby.save();
       if (savedHobby) {
