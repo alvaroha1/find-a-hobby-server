@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 const getAllHobbies = async (ctx) => {
   let hobbies = await Hobby.find();
-  const userId = ctx.token;
+
   if (!hobbies) {
     // eslint-disable-next-line
     console.log('no hobbies found');
@@ -14,7 +14,8 @@ const getAllHobbies = async (ctx) => {
     ctx.status = 500;
     return;
   }
-  const decoded = jwt.verify(userId, 'secret');
+  const token = ctx.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, 'secret');
 
   let user = await User.findOne({ username: decoded.username });
 
@@ -44,7 +45,8 @@ const getFavHobbies = async (ctx) => {
     ctx.status = 500;
     return;
   }
-  const decoded = jwt.verify(userId, 'secret');
+  const token = ctx.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, 'secret');
 
   let user = await User.findOne({ username: decoded.username });
 
@@ -98,10 +100,10 @@ const postHobby = async (ctx) => {
 };
 
 const likeHobby = async (ctx) => {
-  const userId = ctx.token;
+  const token = ctx.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, 'secret');
   const hobbyId = ctx.request.body.hobbyId;
 
-  const decoded = jwt.verify(userId, 'secret');
   let user = await User.find({ username: decoded.username });
   if (user.length) {
     user = await User.findOneAndUpdate(
@@ -114,14 +116,14 @@ const likeHobby = async (ctx) => {
 
   raccoon.liked(decoded.username, hobbyId);
 
-  ctx.body = { userId, hobbyId };
+  ctx.body = { hobbyId };
 };
 
 const dislikeHobby = async (ctx) => {
-  const userId = ctx.token;
+  const token = ctx.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, 'secret');
   const hobbyId = ctx.request.body.hobbyId;
 
-  const decoded = jwt.verify(userId, 'secret');
   let user = await User.find({ username: decoded.username });
   if (user.length) {
     user = await User.findOneAndUpdate(
@@ -134,7 +136,7 @@ const dislikeHobby = async (ctx) => {
 
   raccoon.disliked(decoded.username, hobbyId);
 
-  ctx.body = { userId, hobbyId };
+  ctx.body = { hobbyId };
 };
 
 module.exports = {

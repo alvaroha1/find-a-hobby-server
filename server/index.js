@@ -12,7 +12,6 @@ const cors = require('@koa/cors');
 
 const router = require('./router');
 // const session = require('./services/session')
-const jwt = require('./services/jwt');
 
 // Connect to mongodb
 require('./models/db');
@@ -22,7 +21,6 @@ const PORT = process.env.PORT || 3001;
 app
   .use(cors())
   .use(logger())
-  // .use(jwt)
   .use(bodyParser())
   .use(router.routes());
 
