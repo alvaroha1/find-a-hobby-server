@@ -78,7 +78,7 @@ const postHobby = async (ctx) => {
       hobby = new Hobby({
         name: hobbyData.name,
         description: hobbyData.description,
-        links: hobbyData.links,
+        // links: hobbyData.links,
         tags: hobbyData.tags,
         pictures: hobbyData.pictures,
       });
