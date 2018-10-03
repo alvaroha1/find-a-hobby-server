@@ -5,7 +5,7 @@ const hobbySchema = new mongoose.Schema({
   description: String,
   // links: [{}],
   tags: [{}],
-  pictures: [{}],
+  pictures: String,
 });
 
 const Hobby = mongoose.model('Hobby', hobbySchema);

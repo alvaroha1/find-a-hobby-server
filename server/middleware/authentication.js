@@ -16,6 +16,6 @@ module.exports = async (ctx, next) => {
     ctx.status = 401;
     return;
   }
-
+  console.log('authenticated')
   await next();
 };

@@ -53,17 +53,18 @@ const signin = async (ctx, next) => {
   const match = await bcrypt.compare(password, user.password);
   if (match) {
 
-    const token = jwt.sign({
+    const userData = {
       username: user.username,
       email: user.email,
       name: user.name,
       likedHobbies: user.likedHobbies,
       profile_picture: user.image,
-    }, secret);
+    }
+    const token = jwt.sign(userData, secret);
 
     ctx.status = 200;
     // console.log(createToken)
-    ctx.body = { success: 'User authorized', token };
+    ctx.body = { success: 'User authorized', token, userData };
   } else {
     ctx.status = 500;
   }

@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 const getAllHobbies = async (ctx) => {
   let hobbies = await Hobby.find();
-
+  // console.log(hobbies)
   if (!hobbies) {
     // eslint-disable-next-line
     console.log('no hobbies found');
@@ -24,10 +24,10 @@ const getAllHobbies = async (ctx) => {
   }
 
   // number of liked hobbies before starting recommendations
-  if (user.likedHobbies.length > 2) {
-    const recs = await raccoon.recommendFor(decoded.username, 10);
-    hobbies = hobbies.filter(hobby => recs.includes(hobby._id));
-  }
+  // if (user.likedHobbies.length > 2) {
+  //   const recs = await raccoon.recommendFor(decoded.username, 10);
+  //   hobbies = hobbies.filter(hobby => recs.includes(hobby._id));
+  // }
 
   hobbies = hobbies.filter(hobby => !user.likedHobbies.includes(String(hobby._id)));
   hobbies = hobbies.filter(hobby => !user.dislikedHobbies.includes(String(hobby._id)));
