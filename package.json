@@ -32,6 +32,8 @@
   "homepage": "https://github.com/jportella93/find-a-hobby#readme",
   "dependencies": {
     "@koa/cors": "^2.2.1",
+    "atob": "^2.1.2",
+    "bcrypt": "^3.0.1",
     "bcrypt-nodejs": "0.0.3",
     "dotenv": "^6.0.0",
     "jsonwebtoken": "^8.2.2",
