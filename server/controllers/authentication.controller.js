@@ -70,7 +70,27 @@ const signin = async (ctx, next) => {
   }
 };
 
+
+const dashboard = async (ctx, next) => {
+  const token = ctx.headers.authorization.split(' ')[1];
+
+  const userInfo = jwt.verify(token, secret);
+
+  const user = await User.findOne({ username: userInfo.username });
+
+  const userData = {
+    username: user.username,
+    email: user.email,
+    name: user.name,
+    likedHobbies: user.likedHobbies,
+    profile_picture: user.image,
+  };
+  ctx.status = 200;
+  ctx.body = { success: 'User authorized', token, userData };
+};
+
 module.exports = {
   signup,
   signin,
+  dashboard,
 };

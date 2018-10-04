@@ -15,5 +15,6 @@ router.put('/discover/like', authentication, hobbiesController.likeHobby);
 router.put('/discover/dislike', authentication, hobbiesController.dislikeHobby);
 router.post('/signup', authenticationController.signup);
 router.get('/signin', authenticationController.signin);
+router.get('/', authentication, authenticationController.dashboard);
 
 module.exports = router;
