@@ -10,7 +10,7 @@ https://github.com/jportella93/find-a-hobby-client</h3>
 
 
 ## Getting started
-Install mongodb and redis in your computer<br>
+Install mongodb and redis in your computer if you don't have done it already. <br>
 https://www.mongodb.com/ <br>
 https://redis.io/
 
