@@ -32,9 +32,9 @@ The original Find-A-Hobby was a great fit for us as a team because we both like 
 * [Mongoose](https://github.com/Automattic/mongoose) - Layer for mongodb.
 
 ## Screenshots
-
-![dashboard](https://github.com/alvaroha1/find-a-hobby-server/blob/master/assets/sc1.JPG)
-![select a picture](https://github.com/alvaroha1/find-a-hobby-server/blob/master/assets/sc2.JPG)
+![login](https://github.com/alvaroha1/find-a-hobby-server/blob/master/assets/sc0.png)
+![dashboard](https://github.com/alvaroha1/find-a-hobby-server/blob/master/assets/sc1.png)
+![select a picture](https://github.com/alvaroha1/find-a-hobby-server/blob/master/assets/sc2.png)
 
 
 ## Getting started
