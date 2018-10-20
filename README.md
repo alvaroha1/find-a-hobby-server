@@ -11,20 +11,6 @@ The main objective of this project was to take an already existing project and c
 The original Find-A-Hobby was a great fit for us as a team because we both like the original idea but at the same time we thought we could take it to a whole new level.
 
 ## Tech Stack
-
-### 1.0
-* [React](https://github.com/facebook/react) - Front end library for building user interfaces
-* [Bootstrap](https://github.com/twbs/bootstrap) - Framework for UI elements.
-* [Onsenui](https://github.com/OnsenUI/OnsenUI) - Mobile friendly framework for responsive elements.
-* [Font Awesome](https://fontawesome.com/) - Icons library. Used for the football ball, dollar sign and ballon icons.
-
-### 2.0
-* SASS
-* Unsplash API
-* Redux
-
-## Tech Stack
-
 * [Koa](https://github.com/koajs/koa) - Async middleware for Node.
 * [Reccomendation Raccoon](https://github.com/guymorita/recommendationRaccoon) - Recommendation engine.
 * [node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - JSON web token implementation for Node.
