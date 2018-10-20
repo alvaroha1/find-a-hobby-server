@@ -1,12 +1,32 @@
-<p align="center">
-  <img src="https://imgur.com/NuDk8QM.png" />
-</p>
+# Find-a-Hobby 2.0
 
+Find-a-Hobby 2.0 contributed in an Open Source project with Rodrigo Sanchez ([Github]( https://github.com/RodriFS/).
+([Github]( https://github.com/alvaroha1/find-a-hobby-client)
 
-> A web app that will help you discover the most amazing thing to spend your leisure time on.
+## Idea
+We decided to remade the whole look of the application and focus on improving the user experience.
 
-<h3 align="center">This is the server implementation of <br>
-https://github.com/jportella93/find-a-hobby-client</h3>
+## Motivation
+The main objective of this project was to take an already existing project and continue working on it.
+The original Find-A-Hobby was a great fit for us as a team because we both like the original idea but at the same time we thought we could take it to a whole new level.
+
+## Tech Stack
+
+### 1.0
+* [React](https://github.com/facebook/react) - Front end library for building user interfaces
+* [Bootstrap](https://github.com/twbs/bootstrap) - Framework for UI elements.
+* [Onsenui](https://github.com/OnsenUI/OnsenUI) - Mobile friendly framework for responsive elements.
+* [Font Awesome](https://fontawesome.com/) - Icons library. Used for the football ball, dollar sign and ballon icons.
+
+### 2.0
+* SASS
+* Unsplash API
+* Redux
+
+## Screenshots
+
+![dashboard](https://github.com/alvaroha1/sehnsucht/blob/master/assets/screenshot1.JPG)
+![select a picture](https://github.com/alvaroha1/sehnsucht/blob/master/assets/screenshot2.JPG)
 
 
 ## Getting started
