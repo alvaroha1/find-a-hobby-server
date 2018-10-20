@@ -1,6 +1,6 @@
 # Find-a-Hobby 2.0
 
-Contributed in an Open Source project with Rodrigo Sanchez [Github]( https://github.com/RodriFS/).
+Contributed in an Open Source project with [Rodrigo Sanchez]( https://github.com/RodriFS/).
 You will need ([Find a Hobby Client]( https://github.com/alvaroha1/find-a-hobby-client)) as well.
 
 ## Motivation
