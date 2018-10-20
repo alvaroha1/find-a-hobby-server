@@ -45,7 +45,7 @@ https://redis.io/
 1. Clone the repo
 
 ```
-$ git clone https://github.com/jportella93/find-a-hobby-server.git
+$ git clone https://github.com/alvaroha1/find-a-hobby-server.git
 $ cd find-a-hobby-server
 ```
 
