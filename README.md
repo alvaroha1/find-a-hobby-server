@@ -3,10 +3,8 @@
 Find-a-Hobby 2.0 contributed in an Open Source project with Rodrigo Sanchez [Github]( https://github.com/RodriFS/).
 You will need ([Find a Hobby Client]( https://github.com/alvaroha1/find-a-hobby-client)) as well.
 
-## Idea
-We decided to remade the whole look of the application and focus on improving the user experience.
-
 ## Motivation
+We decided to remade the whole look of the application and focus on improving the user experience.
 The main objective of this project was to take an already existing project and continue working on it.
 The original Find-A-Hobby was a great fit for us as a team because we both like the original idea but at the same time we thought we could take it to a whole new level.
 
