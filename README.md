@@ -60,7 +60,7 @@ If everything went good you will see a message like:
 The number of the port that logs in (3000 in this case) is what you have to write in the client in the file /src/lib/apiClient.js
 
 6. Connect with client.
-Go to https://github.com/jportella93/find-a-hobby-client and follow the getting started instructions.
+Go to https://github.com/alvaroha1/find-a-hobby-client and follow the getting started instructions.
 
 ## Original Author
 
