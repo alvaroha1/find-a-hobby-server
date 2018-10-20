@@ -23,6 +23,14 @@ The original Find-A-Hobby was a great fit for us as a team because we both like 
 * Unsplash API
 * Redux
 
+## Tech Stack
+
+* [Koa](https://github.com/koajs/koa) - Async middleware for Node.
+* [Reccomendation Raccoon](https://github.com/guymorita/recommendationRaccoon) - Recommendation engine.
+* [node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - JSON web token implementation for Node.
+* [Mongodb](https://github.com/mongodb/mongo) - No relational database.
+* [Mongoose](https://github.com/Automattic/mongoose) - Layer for mongodb.
+
 ## Screenshots
 
 ![dashboard](https://github.com/alvaroha1/find-a-hobby-server/blob/master/assets/sc1.JPG)
@@ -70,25 +78,11 @@ The number of the port that logs in (3000 in this case) is what you have to writ
 6. Connect with client.
 Go to https://github.com/jportella93/find-a-hobby-client and follow the getting started instructions.
 
-
-## Built with
-
-* [Koa](https://github.com/koajs/koa) - Async middleware for Node.
-* [Reccomendation Raccoon](https://github.com/guymorita/recommendationRaccoon) - Recommendation engine.
-* [node-jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - JSON web token implementation for Node.
-* [Mongodb](https://github.com/mongodb/mongo) - No relational database.
-* [Mongoose](https://github.com/Automattic/mongoose) - Layer for mongodb.
-
-
-## Author
+## Original Author
 
 Jon Portella - [Github](https://github.com/jportella93) - [LinkedIn](https://www.linkedin.com/in/jonportella/)
-
 
 ## License
 
 This project is licensed under the MIT License.
 
-<p align="center">
-  <img src="https://imgur.com/W3jHOFM.png" />
-</p>
