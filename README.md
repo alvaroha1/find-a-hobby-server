@@ -72,7 +72,9 @@ Go to https://github.com/alvaroha1/find-a-hobby-client and follow the getting st
 
 ## Authors
 
-Jon Portella - [Github](https://github.com/jportella93) - [LinkedIn](https://www.linkedin.com/in/jonportella/)
+* Jon Portella - [Github](https://github.com/jportella93) - [LinkedIn](https://www.linkedin.com/in/jonportella/)
+* Rodrigo Sanchez [GitHub](https://github.com/RodriFS/) - [Linkedin](https://www.linkedin.com/in/rodrigo-f-sanchez/)
+* Alvaro Hernandez Assens [GitHub](https://github.com/alvaroha1) - [Linkedin](https://www.linkedin.com/in/alvaroha/)
 
 ## License
 
