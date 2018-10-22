@@ -3,6 +3,14 @@
 Contributed in an Open Source project with [Rodrigo Sanchez]( https://github.com/RodriFS/).
 You will need ([Find a Hobby Client]( https://github.com/alvaroha1/find-a-hobby-client)) as well.
 
+## Table of contents
+* [Motivation](#motivation)
+* [Tech Stack](#tech-stack)
+* [Screenshots](#screenshots)
+* [Getting started](#getting-started)
+* [Authors](#authors)
+* [License](#license)
+
 ## Motivation
 We decided to remade the whole look of the application and focus on improving the user experience.
 The main objective of this project was to take an already existing project and continue working on it.
@@ -62,7 +70,7 @@ The number of the port that logs in (3000 in this case) is what you have to writ
 6. Connect with client.
 Go to https://github.com/alvaroha1/find-a-hobby-client and follow the getting started instructions.
 
-## Original Author
+## Authors
 
 Jon Portella - [Github](https://github.com/jportella93) - [LinkedIn](https://www.linkedin.com/in/jonportella/)
 
