@@ -1,5 +1,4 @@
 # Find-a-Hobby 2.0
-
 Contributed in an Open Source project with [Rodrigo Sanchez]( https://github.com/RodriFS/).
 You will need ([Find a Hobby Client]( https://github.com/alvaroha1/find-a-hobby-client)) as well.
 
@@ -71,12 +70,10 @@ The number of the port that logs in (3000 in this case) is what you have to writ
 Go to https://github.com/alvaroha1/find-a-hobby-client and follow the getting started instructions.
 
 ## Authors
-
 * Jon Portella - [Github](https://github.com/jportella93) - [LinkedIn](https://www.linkedin.com/in/jonportella/)
 * Rodrigo Sanchez [GitHub](https://github.com/RodriFS/) - [Linkedin](https://www.linkedin.com/in/rodrigo-f-sanchez/)
 * Alvaro Hernandez Assens [GitHub](https://github.com/alvaroha1) - [Linkedin](https://www.linkedin.com/in/alvaroha/)
 
 ## License
-
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/marcoantonioghiani01/xest-client/blob/master/LICENSE) file for details
 
